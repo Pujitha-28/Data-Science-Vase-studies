@@ -1,0 +1,161 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "private_outputs": true,
+      "provenance": [],
+      "mount_file_id": "1eWCyQ9RamMz8IoYlHsup8hKyN13ax8FC",
+      "authorship_tag": "ABX9TyMGmfSelylU0e8KKf96/hBs",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/Pujitha-28/Data-Science-Vase-studies/blob/main/CaseStudy-2\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "5cSOzGGWHXYK"
+      },
+      "outputs": [],
+      "source": [
+        "#CASE STUDY 2\n",
+        "import numpy as np #linear algebra\n",
+        "import pandas as pd # data processing , CSV file I/O files\n",
+        "import matplotlib.pyplot as plt\n",
+        "import seaborn as sns;\n",
+        "\n",
+        "df = pd.read_csv(\"/content/drive/MyDrive/heart.csv\")\n",
+        "\n",
+        "df.head()"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "#checking for NAN values\n",
+        "df.isnull().sum()"
+      ],
+      "metadata": {
+        "id": "XRWqdovyHnXR"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "df.shape\n",
+        "df.describe()"
+      ],
+      "metadata": {
+        "id": "0R8_pOAuHtCd"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "#target distribution\n",
+        "df.target.value_counts()"
+      ],
+      "metadata": {
+        "id": "TgJtrMjeHsdU"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "#target distribution\n",
+        "df.target.value_counts().sum()"
+      ],
+      "metadata": {
+        "id": "ffEkE9UvH1od"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "#show corelation matrix\n",
+        "corr = df.corr()\n",
+        "plt.figure(figsize=(18,10))\n",
+        "sns.heatmap(corr,annot=True,)\n",
+        "plt.show()"
+      ],
+      "metadata": {
+        "id": "RnegvIHxH8ZW"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "#plot target dist\n",
+        "#sns.countplot(df.target,hue='sex',palette=['green','red'])\n",
+        "#sns.countplot(x=df.target, data=df,palette=['#1CA53B','red])\n",
+        "sns.countplot(x=df.target,data=df,palette=['#1CA53B','red'])\n",
+        "#seaborn pairplot(df,hue='size')\n",
+        "plt.xticks([0,1],labels=['Not Disease','Disease'])\n",
+        "plt.title(\"Target Distribution\");"
+      ],
+      "metadata": {
+        "id": "XFgv9mSEIALH"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "#plot target dist\n",
+        "#sns.countplot(df.target,hue='sex',palette=['green','red'])\n",
+        "#sns.countplot(x=df.target, data=df,palette=['#1CA53B','red])\n",
+        "sns.countplot(x=df.target,hue='sex',data=df,palette=['#1CA53B','red'])\n",
+        "#seaborn pairplot(df,hue='size')\n",
+        "plt.xticks([0,1],labels=['Not Disease','Disease'])\n",
+        "plt.title(\"Target Distribution\");"
+      ],
+      "metadata": {
+        "id": "ojYJGW1OIEZp"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "plt.figure(figsize=(18,10))\n",
+        "sns.countplot(x='age',hue='target',data=df,palette=['green','red'])\n",
+        "plt.legend"
+      ],
+      "metadata": {
+        "id": "dIhtA5etIHeu"
+      },
+      "execution_count": null,
+      "outputs": []
+    }
+  ]
+}
